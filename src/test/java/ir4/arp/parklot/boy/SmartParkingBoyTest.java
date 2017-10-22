@@ -5,8 +5,7 @@ import org.junit.Test;
 import ir4.arp.parklot.Car;
 import ir4.arp.parklot.ParkingLot;
 import ir4.arp.parklot.ParkingTicket;
-import ir4.arp.parklot.boy.SmartParkingBoy;
-import ir4.arp.parklot.exception.NoAvaliableParkingSpacesException;
+import ir4.arp.parklot.exception.NoAvailableParkingSpacesException;
 
 import static junit.framework.Assert.*;
 
@@ -24,7 +23,7 @@ public class SmartParkingBoyTest {
         assertEquals("P1-TB1", parkingTicket.getTicketNo());
     }
 
-    @Test(expected = NoAvaliableParkingSpacesException.class)
+    @Test(expected = NoAvailableParkingSpacesException.class)
     public void should_return_exception_When_given_one_unavailable_spaces_parking_lot() {
         //given
         int[] parkedCars = {100};
@@ -70,7 +69,7 @@ public class SmartParkingBoyTest {
         assertEquals("P2-TA101", parkingTicket.getTicketNo());
     }
 
-    @Test(expected = NoAvaliableParkingSpacesException.class)
+    @Test(expected = NoAvailableParkingSpacesException.class)
     public void should_return_exception_When_given_two_unavailable_spaces_parking_lots() {
         //given
         int[] parkedCars = {100, 100};

@@ -4,7 +4,7 @@ public class Car {
 
     private String plateNum;
 
-    public String getPlateNum() {
+    String getPlateNum() {
         return plateNum;
     }
 

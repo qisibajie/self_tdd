@@ -1,6 +1,6 @@
 package ir4.arp.parklot.boy;
 
-import ir4.arp.parklot.exception.NoAvaliableParkingSpacesException;
+import ir4.arp.parklot.exception.NoAvailableParkingSpacesException;
 import org.junit.Test;
 
 import ir4.arp.parklot.Car;
@@ -23,7 +23,7 @@ public class ParkingManagerTest {
         assertSame(car, parkingManager.pickUpCar(parkingTicket));
     }
 
-    @Test(expected = NoAvaliableParkingSpacesException.class)
+    @Test(expected = NoAvailableParkingSpacesException.class)
     public void should_pickup_the_same_car_when_park_car_given_unavailable_parking_spaces() {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 100, "A");
@@ -49,7 +49,7 @@ public class ParkingManagerTest {
         assertSame(car, parkingManager.pickUpCar(parkingTicket));
     }
 
-    @Test(expected = NoAvaliableParkingSpacesException.class)
+    @Test(expected = NoAvailableParkingSpacesException.class)
     public void should_throw_exception_when_park_car_given_unavailable_parking_spaces_by_parking_boy() {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 100, "A");
@@ -124,7 +124,7 @@ public class ParkingManagerTest {
     }
 
 
-    @Test(expected = NoAvaliableParkingSpacesException.class)
+    @Test(expected = NoAvailableParkingSpacesException.class)
     public void should_pick_up_same_car_when_park_up_car_given_two_parking_boys_two_unavailable_parking_lots() {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 100, "A");

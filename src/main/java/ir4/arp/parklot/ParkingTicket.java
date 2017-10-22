@@ -3,8 +3,6 @@ package ir4.arp.parklot;
 public class ParkingTicket {
     private String carNo;
     private String parkingLotName;
-    private final String PREFIX_TICKET = "T";
-    private final String PREFIX_PARKLOT = "-";
 
     public ParkingTicket(String plateNum) {
         this.carNo = plateNum;
@@ -17,8 +15,10 @@ public class ParkingTicket {
     }
 
     public String getTicketNo() {
+        final String PREFIX_TICKET = "T";
+        final String PREFIX_PARKING_LOT = "-";
         if (!"".equals(this.parkingLotName)) {
-            return this.parkingLotName + PREFIX_PARKLOT + PREFIX_TICKET + carNo;
+            return this.parkingLotName + PREFIX_PARKING_LOT + PREFIX_TICKET + carNo;
         } else {
             return PREFIX_TICKET + carNo;
         }
@@ -28,17 +28,8 @@ public class ParkingTicket {
     public String getParkingLotName() {
         return parkingLotName;
     }
-
     @Override
     public boolean equals(Object ticket) {
-        if (ticket == null) {
-            return false;
-        } else {
-            if (ticket instanceof ParkingTicket) {
-                return this.getTicketNo().equals(((ParkingTicket) ticket).getTicketNo());
-            } else {
-                return false;
-            }
-        }
+        return ticket != null && ticket instanceof ParkingTicket && this.getTicketNo().equals(((ParkingTicket) ticket).getTicketNo());
     }
 }

@@ -15,7 +15,7 @@ public class LengthTest {
     public void should_return_length_when_given_10() {
         Length lengthA = new Length(10);
 
-        assertEquals(10, lengthA.getvalue());
+        assertEquals(10, lengthA.getValue());
 
     }
 
@@ -23,7 +23,7 @@ public class LengthTest {
     public void should_return_length_when_given_9() {
         Length lengthA = new Length(9);
 
-        assertEquals(9, lengthA.getvalue());
+        assertEquals(9, lengthA.getValue());
     }
 
     @Test

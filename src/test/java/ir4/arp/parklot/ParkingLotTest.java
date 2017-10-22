@@ -7,10 +7,10 @@ import static org.junit.Assert.assertSame;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 
-import ir4.arp.parklot.exception.NoAvaliableParkingSpacesException;
+import ir4.arp.parklot.exception.NoAvailableParkingSpacesException;
 import ir4.arp.parklot.exception.ParkingTicketInValidException;
+import org.junit.Test;
 
 public class ParkingLotTest {
 
@@ -41,7 +41,7 @@ public class ParkingLotTest {
         assertEquals(69, parkingLot.getCurrentParkingSpaces());
     }
 
-    @Test(expected = NoAvaliableParkingSpacesException.class)
+    @Test(expected = NoAvailableParkingSpacesException.class)
     public void should_return_exception_when_park_1_car_given_100_parking_spaces_with_parking_100_cars() {
         ParkingLot parkingLot = new ParkingLot("A1", 100);
         for (int i = 0; i < 100; i++) {

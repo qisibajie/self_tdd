@@ -11,18 +11,18 @@ import ir4.arp.parklot.exception.ParkingTicketInValidException;
 
 public abstract class BaseBoy {
 
-    protected Map<String, ParkingLot> parkingLots = new TreeMap<String, ParkingLot>(new Comparator<String>() {
+    Map<String, ParkingLot> parkingLots = new TreeMap<>(new Comparator<String>() {
         public int compare(String firstStr, String secondKey) {
             return firstStr.compareTo(secondKey);
         }
     });
 
 
-    public void addParkingLot(ParkingLot parkingLot) {
+    void addParkingLot(ParkingLot parkingLot) {
         parkingLots.put(parkingLot.getParkingLotName(), parkingLot);
     }
 
-    public Car pickUpCar(ParkingTicket parkingTicket) {
+    Car pickUpCar(ParkingTicket parkingTicket) {
         if (parkingTicket == null) {
             throw new ParkingTicketInValidException("Ticket is inviald");
         }

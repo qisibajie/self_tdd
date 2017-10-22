@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import ir4.arp.parklot.exception.NoAvaliableParkingSpacesException;
+import ir4.arp.parklot.exception.NoAvailableParkingSpacesException;
 import ir4.arp.parklot.exception.ParkingTicketInValidException;
 
 public class ParkingLot {
 
-    private Map<ParkingTicket, Car> mapCarsTickets = new HashMap<ParkingTicket, Car>();
+    private Map<ParkingTicket, Car> mapCarsTickets = new HashMap<>();
     private int curr_avil_count = 100;
     private String parkingLotName;
 
@@ -27,7 +27,7 @@ public class ParkingLot {
 
 
     public BigDecimal getAvailablePercentSpaces(ParkingLot parkingLot) {
-        return new BigDecimal(parkingLot.getCurrentParkingSpaces()).divide(new BigDecimal(parkingLot.getParkingLotSpacesTotal()));
+        return new BigDecimal(parkingLot.getCurrentParkingSpaces()).divide(new BigDecimal(parkingLot.getParkingLotSpacesTotal()), 2);
     }
 
     public String getParkingLotName() {
@@ -45,7 +45,7 @@ public class ParkingLot {
 
     public ParkingTicket parkCar(Car car) {
         if (curr_avil_count <= 0) {
-            throw new NoAvaliableParkingSpacesException("There is no available parking space");
+            throw new NoAvailableParkingSpacesException("There is no available parking space");
         }
         ParkingTicket parkingTicket = new ParkingTicket(this.parkingLotName, car.getPlateNum());
         mapCarsTickets.put(parkingTicket, car);
