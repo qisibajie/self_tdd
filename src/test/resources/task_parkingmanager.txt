@@ -1,17 +1,16 @@
 # Manager停车
 #Task1: park car to one empty parking lot
-Given: 1 parking lot P1 with 100 parking spaces, 0 car is parked in it
-When: manager self parked a car('B1')
+Given: 1 parking manager, 1 parking lot P1 with 100 parking spaces, 0 car is parked in it
+When: parking manager parked a car('B1')
 Then: success and return a ticket('P1-TB1')
 
 #Task2: park car to one full parking lot
-Given: 1 parking lot P2 with 100 parking spaces, 100 car is parked in it
-When: manager self park a car('B1')
+When: parking manager park a car('B1')
 Then: throw no available parking space
 
 #Task3: manager park car via parking boy with available parking space parking lot
 Given: 1 parking manger, 1 parking boy, 1 available parking space parking lot managed by parking boy
-When: manager park car via parking boy
+When: parking manager park car via parking boy
 Then: success and return a ticket
 
 #Task4: manger park car via parking boy with no available parking space parking lot
@@ -19,45 +18,31 @@ Given: 1 parking manger, 1 parking boy, 1 unavailable parking space parking lot 
 Then: throw no available parking space exception
 
 # Manager取车
-#Task5: pick up 1 car parked self via manager
+#Task5: manager pick up 1 car parked himself
 Given: 1 parking lot P1, park a car (B1) via manager self, the ticket (P1-TB1)
-When: pick up 1 car with ticket P1-TB1 via parking manager self
+When: parking manager pick up 1 car with ticket P1-TB1
 Then: return car B1
 
-#Task6: pick up 1 car parked by parking boy via manager
+#Task6: manager pick up 1 car parked by parking boy
 Given: 1 parking lot P1, park a car (B1) via parking boy, got the ticket (T1)
-When: pick up 1 car with ticket T1 via parking manager self
+When: parking manager pick up 1 car with ticket T1
 Then: return car B1
 
-#Task7: pick up 1 car parked by parking boy via parking boy
-Given: 1 parking lot P1, park a car (B1)with ticket(P1-TB1) via parking boy, got the ticket (P2-TA1)
-When: pick up 1 car with ticket T1 via parking boy
-Then: return car B1
+#Task7: manager pick up 1 car with invalid ticket
+Given: 1 parking lot P1, park a car (B1) via parking boy, got the ticket (T1)
+When: parking manager pick up 1 car with invalid ticket
+Then: throw parking ticket invalid exception
 
 
-#Task8: pick up 1 car parked by manager via parking boy
-Given: 1 parking lot P1, park a car (B1)with ticket(P1-TB1) via parking manager, got the ticket (P2-TA1)
-When: pick up 1 car with ticket T1 via parking boy
-Then: return car B1
+#Manager 管理多个停车仔
 
-#Manager 管理停车仔
-
-#Task12: two parking boy managed by parking manager
-Given: two parking boys managed by parking manager, 2 parking lot P1, P2 each with 100 parking spaces, parking lot P1 parked 100 cars in it, parking lot P2 parked 30 cars in it.
-When: manager park a car('A1') via parking boy
+#Task8: two parking boy managed by parking manager
+Given: two parking boys managed by parking manager, 2 available parking spaces parking lot P1, P2
+When: parking manager park a car('A1')
 Then: success and return a ticket('P1-TA1')
 
-#Task13: two parking boy
-Given: 2 parking boys managed by parking manager, 2 parking lot P1, P2 each with 100 parking spaces, parking lot P1 parked 100 cars in it, parking lot P2 parked 30 cars in it.
-When: manager pickup car via parking boy
-Then: success to get the car
 
-#Task14: two parking boy
-Given: 2 parking boys managed by parking manager, each boy with 1 parking lot, each parking lot is full
-When: manager parked a car via parking boy
-Then: throw no available parking space
-
-#Task15:
-Given: 2 parking boys managed by parking manager, a invalid ticket
-When: manager pickup a car via the ticket
-Then: throw no available parking space
+#Task9: two parking boy managed by parking manager
+Given: two parking boys managed by parking manager, 2 unavailable parking spaces parking lot P1, P2
+When: parking manager park a car('A1')
+Then: throw no available parking space exception

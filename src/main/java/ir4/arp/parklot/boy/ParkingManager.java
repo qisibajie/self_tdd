@@ -26,4 +26,6 @@ public class ParkingManager extends BaseBoy {
     }
 
 
+    public void addParkingBoy(BaseBoy baseParkingBoy) {
+    }
 }
