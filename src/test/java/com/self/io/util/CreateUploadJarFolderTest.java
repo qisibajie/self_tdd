@@ -3,7 +3,6 @@ package com.self.io.util;
 import org.junit.Assert;
 import org.junit.Test;
 
-
 public class CreateUploadJarFolderTest {
     @Test
     public void executeTest() {
@@ -14,4 +13,6 @@ public class CreateUploadJarFolderTest {
         //then
         Assert.assertEquals(isCreateSuccessful, true);
     }
+
+
 }
