@@ -1,3 +1,5 @@
+package com.self.io.util;
+
 class CreateUploadJarFolder {
     /**
      * @return true
