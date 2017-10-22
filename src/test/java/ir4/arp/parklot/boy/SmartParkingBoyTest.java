@@ -7,7 +7,7 @@ import ir4.arp.parklot.ParkingLot;
 import ir4.arp.parklot.ParkingTicket;
 import ir4.arp.parklot.exception.NoAvailableParkingSpacesException;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
 
 public class SmartParkingBoyTest {
 

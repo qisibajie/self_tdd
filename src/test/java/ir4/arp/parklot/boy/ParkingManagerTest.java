@@ -7,7 +7,7 @@ import ir4.arp.parklot.Car;
 import ir4.arp.parklot.ParkingLot;
 import ir4.arp.parklot.ParkingTicket;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
 
 public class ParkingManagerTest {
     @Test

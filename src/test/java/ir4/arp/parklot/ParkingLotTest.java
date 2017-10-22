@@ -64,7 +64,7 @@ public class ParkingLotTest {
     @Test
     public void should_return_T2_when_park_1_car_given_100_parking_spaces_with_parking_99_car_tickets() {
         ParkingLot parkingLot = new ParkingLot("A1", 100);
-        List<ParkingTicket> parkingTickets = new ArrayList<ParkingTicket>();
+        List<ParkingTicket> parkingTickets = new ArrayList<>();
         for (int i = 0; i < 99; i++) {
             Car car = new Car("B" + i);
             parkingTickets.add(parkingLot.parkCar(car));
@@ -78,8 +78,8 @@ public class ParkingLotTest {
     @Test
     public void should_return_91_when_pick_up_1_car_given_100_parking_spaces_with_parking_10_cars_tickets_TB0_TB9() {
         ParkingLot parkingLot = new ParkingLot("A1", 100);
-        List<ParkingTicket> parkingTickets = new ArrayList<ParkingTicket>();
-        List<Car> cars = new ArrayList<Car>();
+        List<ParkingTicket> parkingTickets = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Car car = new Car("B" + i);
             cars.add(car);
@@ -92,10 +92,9 @@ public class ParkingLotTest {
     @Test(expected = ParkingTicketInValidException.class)
     public void should_return_exception_when_pick_up_1_car_given_100_parking_spaces_with_parking_10_cars_tickets_TB0_TB9() {
         ParkingLot parkingLot = new ParkingLot("A1", 100);
-        List<ParkingTicket> parkingTickets = new ArrayList<ParkingTicket>();
         for (int i = 0; i < 10; i++) {
             Car car = new Car("B" + i);
-            parkingTickets.add(parkingLot.parkCar(car));
+            parkingLot.parkCar(car);
         }
         parkingLot.pickUpCar(new ParkingTicket("TB11"));
     }
