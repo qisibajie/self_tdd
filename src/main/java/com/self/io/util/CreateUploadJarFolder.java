@@ -2,6 +2,7 @@ package com.self.io.util;
 
 class CreateUploadJarFolder {
     private static final String INDICATOR = "target";
+
     /**
      * @return true
      */
