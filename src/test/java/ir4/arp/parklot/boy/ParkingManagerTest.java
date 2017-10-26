@@ -1,13 +1,15 @@
 package ir4.arp.parklot.boy;
 
-import ir4.arp.parklot.exception.NoAvailableParkingSpacesException;
+import ir4.arp.parklot.exception.NoAvaliableParkingSpacesException;
+import ir4.arp.parklot.exception.ParkingTicketInValidException;
+
 import org.junit.Test;
 
 import ir4.arp.parklot.Car;
 import ir4.arp.parklot.ParkingLot;
 import ir4.arp.parklot.ParkingTicket;
 
-import static org.junit.Assert.*;
+import static junit.framework.Assert.*;
 
 public class ParkingManagerTest {
     @Test
@@ -15,7 +17,7 @@ public class ParkingManagerTest {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 0, "A");
         ParkingManager parkingManager = new ParkingManager();
-        parkingManager.addParkingLot(parkingLotA);
+        parkingManager.addParkingAble(parkingLotA);
         Car car = new Car("A101");
         // when
         ParkingTicket parkingTicket = parkingManager.parkCar(car);
@@ -23,12 +25,12 @@ public class ParkingManagerTest {
         assertSame(car, parkingManager.pickUpCar(parkingTicket));
     }
 
-    @Test(expected = NoAvailableParkingSpacesException.class)
-    public void should_pickup_the_same_car_when_park_car_given_unavailable_parking_spaces() {
+    @Test(expected = NoAvaliableParkingSpacesException.class)
+    public void should_throw_exception_when_park_car_given_unavailable_parking_spaces() {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 100, "A");
         ParkingManager parkingManager = new ParkingManager();
-        parkingManager.addParkingLot(parkingLotA);
+        parkingManager.addParkingAble(parkingLotA);
         Car car = new Car("A101");
         // when
         parkingManager.parkCar(car);
@@ -41,7 +43,7 @@ public class ParkingManagerTest {
         ParkingManager parkingManager = new ParkingManager();
         ParkingBoy parkingBoy = new ParkingBoy();
         parkingBoy.addParkingLot(parkingLotA);
-        parkingManager.addParkingBoy(parkingBoy);
+        parkingManager.addParkingAble(parkingBoy);
         Car car = new Car("A101");
         // when
         ParkingTicket parkingTicket = parkingBoy.parkCar(car);
@@ -49,14 +51,14 @@ public class ParkingManagerTest {
         assertSame(car, parkingManager.pickUpCar(parkingTicket));
     }
 
-    @Test(expected = NoAvailableParkingSpacesException.class)
+    @Test(expected = NoAvaliableParkingSpacesException.class)
     public void should_throw_exception_when_park_car_given_unavailable_parking_spaces_by_parking_boy() {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 100, "A");
         ParkingManager parkingManager = new ParkingManager();
         ParkingBoy parkingBoy = new ParkingBoy();
         parkingBoy.addParkingLot(parkingLotA);
-        parkingManager.addParkingBoy(parkingBoy);
+        parkingManager.addParkingAble(parkingBoy);
         Car car = new Car("A101");
         // when
         parkingManager.parkCar(car);
@@ -67,7 +69,7 @@ public class ParkingManagerTest {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 0, "A");
         ParkingManager parkingManager = new ParkingManager();
-        parkingManager.addParkingLot(parkingLotA);
+        parkingManager.addParkingAble(parkingLotA);
         Car expectedCar = new Car("A101");
         ParkingTicket parkingTicket = parkingManager.parkCar(expectedCar);
         // when
@@ -85,13 +87,14 @@ public class ParkingManagerTest {
         ParkingBoy parkingBoy = new ParkingBoy();
         parkingBoy.addParkingLot(parkingLotA);
         ParkingTicket parkingTicket = parkingBoy.parkCar(expectedCar);
+        parkingManager.addParkingAble(parkingBoy);
         // when
         Car actualCar = parkingManager.pickUpCar(parkingTicket);
         //Then
         assertSame(expectedCar, actualCar);
     }
 
-    @Test
+    @Test(expected = ParkingTicketInValidException.class)
     public void should_return_invalid_ticket_exception_when_pick_up_car_given_invalid_ticket() {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 20, "A");
@@ -99,6 +102,7 @@ public class ParkingManagerTest {
         ParkingBoy parkingBoy = new ParkingBoy();
         parkingBoy.addParkingLot(parkingLotA);
         ParkingTicket parkingTicket = new ParkingTicket("P1", "B101");
+        parkingManager.addParkingAble(parkingBoy);
         // when
         parkingManager.pickUpCar(parkingTicket);
     }
@@ -114,8 +118,8 @@ public class ParkingManagerTest {
         parkingBoy.addParkingLot(parkingLotA);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
         smartParkingBoy.addParkingLot(parkingLotB);
-        parkingManager.addParkingBoy(parkingBoy);
-        parkingManager.addParkingBoy(smartParkingBoy);
+        parkingManager.addParkingAble(parkingBoy);
+        parkingManager.addParkingAble(smartParkingBoy);
         Car expectedCar = new Car("A101");
         //
         ParkingTicket parkingTicket = parkingManager.parkCar(expectedCar);
@@ -124,7 +128,7 @@ public class ParkingManagerTest {
     }
 
 
-    @Test(expected = NoAvailableParkingSpacesException.class)
+    @Test(expected = NoAvaliableParkingSpacesException.class)
     public void should_pick_up_same_car_when_park_up_car_given_two_parking_boys_two_unavailable_parking_lots() {
         // given
         ParkingLot parkingLotA = initParkingLot("P1", 100, 100, "A");
@@ -134,8 +138,8 @@ public class ParkingManagerTest {
         parkingBoy.addParkingLot(parkingLotA);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
         smartParkingBoy.addParkingLot(parkingLotB);
-        parkingManager.addParkingBoy(parkingBoy);
-        parkingManager.addParkingBoy(smartParkingBoy);
+        parkingManager.addParkingAble(parkingBoy);
+        parkingManager.addParkingAble(smartParkingBoy);
         Car expectedCar = new Car("A101");
         //
         parkingManager.parkCar(expectedCar);

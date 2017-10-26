@@ -18,7 +18,7 @@ Given: 1 parking manger, 1 parking boy, 1 unavailable parking space parking lot 
 Then: throw no available parking space exception
 
 # Manager取车
-#Task5: manager pick up 1 car parked himself
+#Task5: manager pick up 1 car parked by himself
 Given: 1 parking lot P1, park a car (B1) via manager self, the ticket (P1-TB1)
 When: parking manager pick up 1 car with ticket P1-TB1
 Then: return car B1
@@ -36,13 +36,13 @@ Then: throw parking ticket invalid exception
 
 #Manager 管理多个停车仔
 
-#Task8: two parking boy managed by parking manager
+#Task8: parking marnager managed two parking boy to park car to available parking lot
 Given: two parking boys managed by parking manager, 2 available parking spaces parking lot P1, P2
 When: parking manager park a car('A1')
 Then: success and return a ticket('P1-TA1')
 
 
-#Task9: two parking boy managed by parking manager
+#Task9: parking marnager managed two parking boy to park car to unavailable parking lot
 Given: two parking boys managed by parking manager, 2 unavailable parking spaces parking lot P1, P2
 When: parking manager park a car('A1')
 Then: throw no available parking space exception

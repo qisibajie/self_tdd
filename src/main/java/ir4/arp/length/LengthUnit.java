@@ -3,8 +3,8 @@ package ir4.arp.length;
 import java.util.HashMap;
 import java.util.Map;
 
-class LengthUnit {
-    static final Map<String, Integer> mapUnit = new HashMap<String, Integer>() {
+public class LengthUnit {
+    public static final Map<String, Integer> mapUnit = new HashMap<String, Integer>() {
         /**
          *
          */

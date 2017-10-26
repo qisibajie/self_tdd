@@ -4,30 +4,18 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import ir4.arp.parklot.exception.NoAvailableParkingSpacesException;
+import ir4.arp.parklot.behavior.ParkingAble;
+import ir4.arp.parklot.exception.NoAvaliableParkingSpacesException;
 import ir4.arp.parklot.exception.ParkingTicketInValidException;
 
-public class ParkingLot {
+public class ParkingLot implements ParkingAble {
 
-    private Map<ParkingTicket, Car> mapCarsTickets = new HashMap<>();
-    private int curr_avil_count = 100;
+    private Map<ParkingTicket, Car> mapCarsTickets = new HashMap<ParkingTicket, Car>();
+    private int totalCapacity = 100;
     private String parkingLotName;
 
-    private void addSpace() {
-        curr_avil_count++;
-    }
-
-    private void reduceSpace() {
-        curr_avil_count--;
-    }
-
-    private int getParkingLotSpacesTotal() {
-        return this.curr_avil_count + mapCarsTickets.size();
-    }
-
-
-    public BigDecimal getAvailablePercentSpaces(ParkingLot parkingLot) {
-        return new BigDecimal(parkingLot.getCurrentParkingSpaces()).divide(new BigDecimal(parkingLot.getParkingLotSpacesTotal()), 2);
+    public BigDecimal getAvailablePercentSpaces() {
+        return new BigDecimal(getAvailableParkingSpaces()).divide(new BigDecimal(this.totalCapacity));
     }
 
     public String getParkingLotName() {
@@ -35,21 +23,20 @@ public class ParkingLot {
     }
 
     public ParkingLot(String name, int count) {
-        curr_avil_count = count;
+        totalCapacity = count;
         parkingLotName = name;
     }
 
-    public int getCurrentParkingSpaces() {
-        return curr_avil_count;
+    public int getAvailableParkingSpaces() {
+        return totalCapacity - mapCarsTickets.size();
     }
 
     public ParkingTicket parkCar(Car car) {
-        if (curr_avil_count <= 0) {
-            throw new NoAvailableParkingSpacesException("There is no available parking space");
+        if (getAvailableParkingSpaces() <= 0) {
+            throw new NoAvaliableParkingSpacesException("There is no available parking space");
         }
         ParkingTicket parkingTicket = new ParkingTicket(this.parkingLotName, car.getPlateNum());
         mapCarsTickets.put(parkingTicket, car);
-        reduceSpace();
         return parkingTicket;
     }
 
@@ -58,14 +45,35 @@ public class ParkingLot {
         if (ticket == null) {
             throw new ParkingTicketInValidException("Parking Ticket is invalid");
         }
-        Car car = mapCarsTickets.remove(ticket);
-        addSpace();
-        return car;
+        return mapCarsTickets.remove(ticket);
+    }
+
+    public boolean hasAvailableSpaces() {
+        return getAvailableParkingSpaces() > 0;
+    }
+
+    @Override
+    public boolean hasSuchCar(ParkingTicket parkingTicket) {
+        ParkingTicket ticket = getParkingTicket(parkingTicket);
+        if (ticket == null) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int getAllParkingSpaces() {
+        return this.totalCapacity;
+    }
+
+    @Override
+    public int getNumOfParkedCars() {
+        return mapCarsTickets.size();
     }
 
     private ParkingTicket getParkingTicket(ParkingTicket parkingTicket) {
         for (ParkingTicket ticket : mapCarsTickets.keySet()) {
-            if (ticket.equals(parkingTicket)) {
+            if (ticket.toString().equals(parkingTicket.toString())) {
                 return ticket;
             }
         }
