@@ -1,9 +1,9 @@
 package com.self.io.util;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class CreateUploadJarFolderTest {
     @Test
