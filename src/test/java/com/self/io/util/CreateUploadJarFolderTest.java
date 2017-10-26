@@ -3,6 +3,8 @@ package com.self.io.util;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
+
 public class CreateUploadJarFolderTest {
     @Test
     public void executeTest() {
@@ -11,7 +13,7 @@ public class CreateUploadJarFolderTest {
         //when
         boolean isCreateSuccessful = createUploadJarFolder.createPomFile();
         //then
-        Assert.assertEquals(isCreateSuccessful, true);
+        assertEquals(isCreateSuccessful, true);
     }
 
     @Test
@@ -22,7 +24,7 @@ public class CreateUploadJarFolderTest {
         //when
         String path = createUploadJarFolder.getProjectRootPath();
         //then
-        Assert.assertEquals(expectedPath, path);
+        assertEquals(expectedPath, path);
     }
 
 
