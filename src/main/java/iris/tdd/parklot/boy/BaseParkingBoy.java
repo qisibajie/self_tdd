@@ -63,6 +63,4 @@ public abstract class BaseParkingBoy implements ParkingAble {
         }
         return parkedCars;
     }
-
-    public abstract ParkingTicket parkCar(Car car);
 }

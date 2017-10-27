@@ -18,7 +18,7 @@ public class AnagramsTest {
         //when
         List<String> anagrams = Anagrams.of("");
         //then
-        assertThat(anagrams, is(""));
+        assertThat(anagrams, is(Arrays.asList("")));
     }
 
     @Test
