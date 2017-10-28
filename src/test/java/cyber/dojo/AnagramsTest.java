@@ -2,9 +2,8 @@ package cyber.dojo;
 
 import org.junit.Test;
 
-import org.hamcrest.CoreMatchers.*;
-
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -18,7 +17,7 @@ public class AnagramsTest {
         //when
         List<String> anagrams = Anagrams.of("");
         //then
-        assertThat(anagrams, is(Arrays.asList("")));
+        assertThat(anagrams, is(Collections.singletonList("")));
     }
 
     @Test
@@ -27,7 +26,7 @@ public class AnagramsTest {
         //when
         List<String> anagrams = Anagrams.of("a");
         //then
-        assertThat(anagrams, is(Arrays.asList("a")));
+        assertThat(anagrams, is(Collections.singletonList("a")));
     }
 
     @Test
