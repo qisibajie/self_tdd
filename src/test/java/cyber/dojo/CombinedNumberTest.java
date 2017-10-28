@@ -3,6 +3,7 @@ package cyber.dojo;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -12,7 +13,7 @@ public class CombinedNumberTest {
     @Test
     public void should_return_itself_when_combine_given_one_number() {
         //given
-        List<Integer> numbers = Arrays.asList(0);
+        List<Integer> numbers = Collections.singletonList(0);
         String expected = "0";
         //when
         String result = CombinedNumber.combine(numbers);

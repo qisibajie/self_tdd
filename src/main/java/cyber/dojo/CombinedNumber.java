@@ -8,12 +8,6 @@ class CombinedNumber {
         if (numbers.size() == 1) {
             return String.valueOf(numbers.get(0));
         }
-
-        /*if (numbers.size() == 2) {
-            String firstCombine = String.valueOf(numbers.get(0)) + String.valueOf(numbers.get(1));
-            String secondCombine = String.valueOf(numbers.get(1)) + String.valueOf(numbers.get(0));
-            return firstCombine.compareTo(secondCombine) >= 0 ? firstCombine : secondCombine;
-        }*/
         String result = "";
         for (int i = 0; i < numbers.size(); i++) {
             String combinedStr = combine(listAfterDropOneNumberAt(numbers, i)) + combine(numbers.subList(i, i + 1));
