@@ -152,7 +152,7 @@ public class CountCoinsTest {
                     }
                 }
             }
-//            System.out.println("number=" + integer + ":=" + count);
+            System.out.println("number=" + integer + ":=" + count);
         }
     }
 }
