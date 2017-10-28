@@ -1,30 +1,32 @@
 package iris.tdd.parklot.boy;
 
+import iris.tdd.parklot.Car;
+import iris.tdd.parklot.ParkingLot;
+import iris.tdd.parklot.ParkingTicket;
+import iris.tdd.parklot.behavior.ParkBehavior;
+import iris.tdd.parklot.behavior.ParkingAble;
+import iris.tdd.parklot.behavior.PickUpBehavior;
+
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import iris.tdd.parklot.Car;
-import iris.tdd.parklot.ParkingLot;
-import iris.tdd.parklot.behavior.ParkingAble;
-import iris.tdd.parklot.exception.ParkingTicketInValidException;
-import iris.tdd.parklot.ParkingTicket;
-
-public abstract class BaseParkingBoy implements ParkingAble {
+public class BaseParkingBoy implements ParkingAble {
 
     Map<String, ParkingLot> parkingLots = new TreeMap<>(Comparator.naturalOrder());
-
+    ParkBehavior parkBehavior;
+    PickUpBehavior pickUpBehavior;
 
     public void addParkingLot(ParkingLot parkingLot) {
         parkingLots.put(parkingLot.getParkingLotName(), parkingLot);
     }
 
+    public ParkingTicket parkCar(Car car) {
+        return parkBehavior.parkCar(parkingLots, car);
+    }
+
     public Car pickUpCar(ParkingTicket parkingTicket) {
-        if (parkingTicket == null) {
-            throw new ParkingTicketInValidException("Ticket is inviald");
-        }
-        ParkingLot parkingLot = parkingLots.get(parkingTicket.getParkingLotName());
-        return parkingLot.pickUpCar(parkingTicket);
+        return pickUpBehavior.pickUpCar(parkingLots, parkingTicket);
     }
 
     public boolean hasAvailableSpaces() {
@@ -44,23 +46,5 @@ public abstract class BaseParkingBoy implements ParkingAble {
             }
         }
         return false;
-    }
-
-    @Override
-    public int getAllParkingSpaces() {
-        int allSpaces = 0;
-        for (ParkingLot parkingLot : parkingLots.values()) {
-            allSpaces += parkingLot.getAllParkingSpaces();
-        }
-        return allSpaces;
-    }
-
-    @Override
-    public int getNumOfParkedCars() {
-        int parkedCars = 0;
-        for (ParkingLot parkingLot : parkingLots.values()) {
-            parkedCars += parkingLot.getNumOfParkedCars();
-        }
-        return parkedCars;
     }
 }

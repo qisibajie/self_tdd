@@ -58,16 +58,6 @@ public class ParkingLot implements ParkingAble {
         return ticket != null;
     }
 
-    @Override
-    public int getAllParkingSpaces() {
-        return this.totalCapacity;
-    }
-
-    @Override
-    public int getNumOfParkedCars() {
-        return mapCarsTickets.size();
-    }
-
     private ParkingTicket getParkingTicket(ParkingTicket parkingTicket) {
         for (ParkingTicket ticket : mapCarsTickets.keySet()) {
             if (ticket.toString().equals(parkingTicket.toString())) {

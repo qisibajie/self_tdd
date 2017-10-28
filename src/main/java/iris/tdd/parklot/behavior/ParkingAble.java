@@ -14,8 +14,4 @@ public interface ParkingAble {
     boolean hasAvailableSpaces();
 
     boolean hasSuchCar(ParkingTicket parkingTicket);
-
-    int getAllParkingSpaces();
-
-    int getNumOfParkedCars();
 }

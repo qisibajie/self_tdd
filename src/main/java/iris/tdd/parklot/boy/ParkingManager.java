@@ -33,25 +33,4 @@ public class ParkingManager {
         }
         throw new ParkingTicketInValidException("This Ticket is invalid");
     }
-
-
-    int getParkingSpaces() {
-        int totalSpaces = 0;
-
-        for (ParkingAble parkingAble : parkingAbles) {
-            totalSpaces += parkingAble.getAllParkingSpaces();
-        }
-
-        return totalSpaces;
-    }
-
-
-    int getNumOfParkedCars() {
-        int parkedCars = 0;
-        for (ParkingAble parkingAble : parkingAbles) {
-            parkedCars += parkingAble.getNumOfParkedCars();
-        }
-        return parkedCars;
-    }
-
 }

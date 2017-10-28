@@ -14,7 +14,7 @@ class ParkingDirector {
     List<ReportItem> generateReport() {
         List<ReportItem> reportItems = new ArrayList<>();
         for (ParkingManager parkingManager : parkingManagers) {
-            ReportItem mReportItem = new ReportItem("M", parkingManager.getNumOfParkedCars(), parkingManager.getParkingSpaces());
+            ReportItem mReportItem = new ReportItem("", 0, 0);
             reportItems.add(mReportItem);
             reportItems.add(mReportItem);
             reportItems.add(mReportItem);
