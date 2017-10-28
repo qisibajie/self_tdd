@@ -2,8 +2,7 @@ package cyber.dojo;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class BalancedParenthesesTest {
     @Test
@@ -13,7 +12,7 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(true));
+        assertEquals(true, result);
     }
 
     @Test
@@ -23,17 +22,17 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(false));
+        assertEquals(false, result);
     }
 
     @Test
     public void should_return_false_when_decide_balance_given_two_letters_1() {
         //given
-        String input = "{)";
+        String input = "{{{{{)";
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //Then
-        assertThat(result, is(false));
+        assertEquals(false, result);
     }
 
     @Test
@@ -43,7 +42,7 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(false));
+        assertEquals(false, result);
     }
 
     @Test
@@ -53,7 +52,7 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(true));
+        assertEquals(true, result);
     }
 
     @Test
@@ -63,7 +62,7 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(true));
+        assertEquals(true, result);
     }
 
     @Test
@@ -73,7 +72,7 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(true));
+        assertEquals(true, result);
     }
 
     @Test
@@ -83,7 +82,7 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(false));
+        assertEquals(false, result);
     }
 
     @Test
@@ -93,7 +92,7 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(true));
+        assertEquals(true, result);
     }
 
     @Test
@@ -103,17 +102,17 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(true));
+        assertEquals(true, result);
     }
 
     @Test
-    public void should_return_false_when_decide_balance_given_six_letters() {
+    public void should_return_false_when_decide_balance_given_six_letters_2() {
         //given
         String input = "{{)(}}";
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(false));
+        assertEquals(false, result);
     }
 
     @Test
@@ -123,7 +122,7 @@ public class BalancedParenthesesTest {
         //when
         boolean result = BalancedParentheses.isBalanced(input);
         //then
-        assertThat(result, is(true));
+        assertEquals(true, result);
     }
 
 }
