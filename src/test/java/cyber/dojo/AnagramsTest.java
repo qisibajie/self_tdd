@@ -38,7 +38,31 @@ public class AnagramsTest {
         //then
         assertThat(anagrams, is(Arrays.asList("ab", "ba")));
     }
-    //should_return_size_6_when_calculate_anagrams_given_Three_letters
-    //should_return_size_24_when_calculate_anagrams_given_four_letters
-    //should_return_size_120_when_calculate_anagrams_given_five_letters
+
+    @Test
+    public void should_return_size_6_when_calculate_anagrams_given_Three_letters() {
+        //given
+        //when
+        List<String> anagrams = Anagrams.of("abc");
+        //then
+        assertThat(anagrams, is(Arrays.asList("abc", "acb", "bac", "bca", "cab", "cba")));
+    }
+
+    @Test
+    public void should_return_size_24_when_calculate_anagrams_given_four_letters() {
+        //given
+        //when
+        List<String> anagrams = Anagrams.of("abcd");
+        //Then
+        assertThat(anagrams.size(), is(24));
+    }
+
+    @Test
+    public void should_return_size_120_when_calculate_anagrams_given_five_letters() {
+        //given
+        //when
+        List<String> anagrams = Anagrams.of("abcde");
+        //then
+        assertThat(anagrams.size(), is(120));
+    }
 }
