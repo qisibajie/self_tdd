@@ -1,26 +1,11 @@
 package com.qisibajie.designpattern.templatemethod;
 
-public class Tea {
-    void prepareRecipe() {
-        boilWater();
-        steepTeaBag();
-        pourInCup();
-        addLemon();
-    }
-
-    private void addLemon() {
+public class Tea extends CaffeineBeverage {
+    public void addCondiments() {
         System.out.println("Adding Lemon");
     }
 
-    private void pourInCup() {
-        System.out.println("Pouring into cup");
-    }
-
-    private void steepTeaBag() {
+    public void brew() {
         System.out.println("Steeping the tea");
-    }
-
-    private void boilWater() {
-        System.out.println("Boiling water");
     }
 }

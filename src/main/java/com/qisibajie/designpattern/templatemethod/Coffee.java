@@ -1,26 +1,12 @@
 package com.qisibajie.designpattern.templatemethod;
 
-public class Coffee {
-    void prepareRecipe() {
-        boilWater();
-        brewCoffeeGrinds();
-        pourInCup();
-        addSugarAndMilk();
-    }
-
-    private void addSugarAndMilk() {
+public class Coffee extends CaffeineBeverage {
+    public void addCondiments() {
         System.out.println("Add Sugar and Milk");
     }
 
-    private void pourInCup() {
-        System.out.println("Pouring into cup");
-    }
-
-    private void brewCoffeeGrinds() {
+    public void brew() {
         System.out.println("Dripping Coffee through filter");
     }
 
-    private void boilWater() {
-        System.out.println("Boiling water");
-    }
 }
